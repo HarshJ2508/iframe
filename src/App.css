@@ -1,0 +1,163 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.resizer:hover {
+  background: #667eea;
+}
+
+.resizer:active {
+  background: #5a67d8;
+}
+
+.resizer::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  background: transparent;
+}
+
+.resizer-handle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 40px;
+  background: rgba(102, 126, 234, 0.8);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.resizer:hover .resizer-handle {
+  opacity: 1;
+}
+
+.resizer-dots {
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+}
+
+.resizer-dots::before,
+.resizer-dots::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+}
+
+.resizer-dots::before {
+  top: -6px;
+}
+
+.resizer-dots::after {
+  top: 6px;
+}
+
+.component-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: black;
+}
+
+.iframe-header {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 1px solid #e0e0e0;
+}
+
+.iframe-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.toggle-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.toggle-button:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.iframe-content {
+  flex: 1;
+  position: relative;
+  border-left: 1px solid #e0e0e0;
+}
+
+.iframe-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .component-one {
+    width: 100% !important;
+  }
+
+  .iframe-container {
+    width: 100% !important;
+    border-left: none;
+  }
+
+  .iframe-header,
+  .iframe-content {
+    border-left: none;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .resizer {
+    display: none;
+  }
+
+  .component-title {
+    font-size: 2rem;
+  }
+}
